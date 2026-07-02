@@ -24,17 +24,32 @@ class Solution {
        
     // }
     
+    // public int climbStairs(int n){
+        // int ans[]=new int[n+1];
+
+        // ans[0] = 1;
+        // ans[1] = 1;
+
+        // for(int i=2;i<n+1;i++){
+        //     ans[i] = ans[i-1]+ans[i-2];
+        // }
+
+        // return ans[n];
+    // }
+
     public int climbStairs(int n){
-        int ans[]=new int[n+1];
-
-        ans[0] = 1;
-        ans[1] = 1;
-
-        for(int i=2;i<n+1;i++){
-            ans[i] = ans[i-1]+ans[i-2];
+         if(n==1)
+            return 1;
+        if(n==2)
+            return 2;
+        int first=1;
+        int second=2;
+        for(int i=3;i<=n;i++){
+            int current=first+second;
+            first=second;
+            second=current;
         }
-
-        return ans[n];
+        return second;
     }
 
 }
