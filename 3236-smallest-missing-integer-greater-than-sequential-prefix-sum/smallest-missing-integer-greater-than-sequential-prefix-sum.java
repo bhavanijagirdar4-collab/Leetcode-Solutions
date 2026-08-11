@@ -2,10 +2,9 @@ class Solution {
     public int missingInteger(int[] nums) {
         
         int n = nums.length,sum=nums[0];
-        int res = 0;
-        HashMap<Integer,Integer> hm = new HashMap<>();
-        for(int i = 0;i<n;i++){
-            hm.put(nums[i],i);
+        HashSet<Integer> present = new HashSet<>();
+        for (int num : nums) {
+            present.add(num);
         }
 
         for(int i=1;i<n;i++){
@@ -16,15 +15,11 @@ class Solution {
             }
         }
       
-      while(sum>0){
-        if(hm.containsKey(sum)){
+        while (present.contains(sum)) {
             sum++;
-        }else{
-           res = sum;
-           break;
         }
-      }
-      return res;
+
+        return sum;
 
     }
 }
